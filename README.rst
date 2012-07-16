@@ -1,5 +1,6 @@
 A simple JSON-RPC implementation for Bottle
 -------------------------------------------
 
-Todo: write readme :)
+  http://bottlepy.org/docs/dev/
 
+Todo: write readme :)
