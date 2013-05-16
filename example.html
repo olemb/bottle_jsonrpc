@@ -9,7 +9,11 @@ function new_request() {
 }
 
 // Simple blocking JSON-RPC function
-function rpc(method, params) {
+function rpc(method) {
+    // Get params (argument 1 and out)
+    var args = Array.prototype.slice.call(arguments);
+    var params = args.slice(1);
+
     if(params === undefined) {
         params = [];  // Allow caller to leave out params
     }
@@ -42,7 +46,7 @@ function rpc(method, params) {
 <body>
 
 <p>
-1 + 2 = <script>document.write(rpc('add', [1, 2]));</script>
+1 + 2 = <script>document.write(rpc('add', 1, 2));</script>
 </p>
 
 </body>
