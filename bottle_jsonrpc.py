@@ -34,7 +34,10 @@ def register(path, obj):
                 raise AttributeError(name)
 
             # Call method
-            result = f(*req['params'])
+            if 'params' in req:
+                result = f(*req['params'])
+            else:
+                result = f()
 
             return {
                 'id' : req['id'],
