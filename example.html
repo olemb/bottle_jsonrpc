@@ -10,6 +10,10 @@ function new_request() {
 
 // Simple blocking JSON-RPC function
 function rpc(method, params) {
+    if(params === undefined) {
+        params = [];  // Allow caller to leave out params
+    }
+
     var i;
     var req = new_request();
     req.open('POST', 'rpc', false);
