@@ -16,7 +16,7 @@ import bottle_jsonrpc
 def index():
     return bottle.static_file('example.html', os.getcwd())
 
-class Methods:
+class Methods(object):
     def add(self, a, b):
         return a + b
 
