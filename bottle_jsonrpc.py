@@ -7,7 +7,6 @@ from __future__ import unicode_literals, print_function
 
 import os
 import sys
-import json
 import traceback
 import bottle
 
@@ -18,9 +17,9 @@ def register(path, obj):
 
     @bottle.post(path)
     def rpc():
-        try:
-            req = json.load(bottle.request.body)
+        req = bottle.request.json
 
+        try:
             name = req['method']
 
             # Ignore private methods
