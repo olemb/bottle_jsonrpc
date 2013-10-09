@@ -11,9 +11,7 @@ import traceback
 import bottle
 
 def register(path, obj):
-    """
-    Register object (any namespace will do) for JSON-RPC.
-    """
+    """Register object (any namespace will do) for JSON-RPC."""
 
     @bottle.post(path)
     def rpc():
@@ -39,14 +37,14 @@ def register(path, obj):
                 result = f()
 
             return {
-                'id' : req['id'],
-                'result' : result,
-                'error' : None,
+                'id': req['id'],
+                'result': result,
+                'error': None,
                 }
         except:
             traceback.print_exc(file=sys.stderr)
             return { 
-                'id' : req['id'],
-                'result' : None,
-                'error' : traceback.format_exc(),
+                'id': req['id'],
+                'result': None,
+                'error': traceback.format_exc(),
                 }
