@@ -31,6 +31,14 @@ Usage
     bottle_jsonrpc.register('/math', Methods(), app=app)
 
 
+Status
+------
+
+Should be considered experimental.
+
+Error reporting (back to the JavaScript client) is not very good.
+
+
 License
 --------
 
