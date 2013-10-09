@@ -14,7 +14,7 @@ Usage
 
     bottle_jsonrpc.register('/math', Methods())
 
-``register()`` takes an optional ``app`` argument::
+``register()`` takes an optional ``app`` argument:
 
 .. code-block:: python
 
