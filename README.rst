@@ -1,6 +1,31 @@
 A simple JSON-RPC implementation for Bottle
--------------------------------------------
+===========================================
 
-  http://bottlepy.org/docs/dev/
+Usage
+-----
 
-Todo: write readme :)
+.. code-block:: python
+
+    import bottle_jsonrpc
+
+    class Methods(object):
+        def add(self, a, b):
+             return a + b
+
+    bottle_jsonrpc.register('/math', Methods())
+
+``register()`` takes an optional ``app`` argument::
+
+.. code-block:: python
+
+    app = bottle.Bottle()
+
+    bottle_jsonrpc.register('/math', Methods(), app=app)
+
+
+References
+----------
+
+http://json-rpc.org/
+
+http://bottlepy.org/
