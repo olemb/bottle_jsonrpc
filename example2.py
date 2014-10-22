@@ -15,14 +15,15 @@ import bottle_jsonrpc
 def index():
     return bottle.static_file('example.html', os.getcwd())
 
-class Methods(object):
-    def add(self, a, b):
-        return a + b
+jsonrpc = bottle_jsonrpc.register('/rpc', Methods())
 
-    def sort(self, lst):
-        return sorted(lst)
+@jsonrpc
+def add(a, b):
+    return a + b
 
-bottle_jsonrpc.register('/rpc', Methods())
+@jsonrpc
+def sort(lst):
+    return sorted(lst)
 
 bottle.debug(True)
 

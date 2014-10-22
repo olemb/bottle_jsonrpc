@@ -12,9 +12,31 @@ attribute of the object will be exposed as a method.
 Usage
 -----
 
+Methods can be added in one of two ways. You can use decorators:
+
+.. code-block:: python
+
+    from bottle_jsonrpc import NameSpace
+
+    jsonrpc = NameSpace('/rpc')
+
+    @jsonrpc
+    def add(a, b):
+        return a + b
+
+    @jsonrpc
+    def sub(a, b):
+        return a - b
+
+or you can add an object to the namespace:
+    
 .. code-block:: python
 
     import bottle_jsonrpc
+
+    bottle_jsonrpc.register()
+
+.. code-block:: python
 
     class Methods(object):
         def add(self, a, b):

@@ -10,44 +10,57 @@ import sys
 import traceback
 import bottle
 
-def register(path, obj, app=None):
-    """Register object (any namespace will do) for JSON-RPC."""
+class NameSpace:
+    def __init__(self, path, obj=None, app=None):
+        self.path = path
+        self.app = app or bottle.default_app()
+        self.methods = {}
 
-    app = app or bottle.default_app()
+        if obj is not None:
+            self.add_object(obj)
 
-    @app.post(path)
-    def rpc():
-        req = bottle.request.json
+        self._make_handler()
 
-        try:
-            name = req['method']
-
-            # Ignore private methods
+    def add_object(self, obj):
+        """Adds all public methods of the object."""
+        for name in dir(obj):
             if name.startswith('_'):
-                raise AttributeError(name)
+                continue
 
-            # Get function
-            f = getattr(obj, name)
+            func = getattr(obj, name)
+            if not callable(func):
+                continue
 
-            if not callable(f):
-                raise AttributeError(name)
+            self.methods[name] = func
 
-            # Call method
-            if 'params' in req:
-                result = f(*req['params'])
-            else:
-                result = f()
+    def _make_handler(self):
+        """Sets up bottle request handler."""
+        @self.app.post(self.path)
+        def rpc():
+            request = bottle.request.json
+            
+            try:
+                name = request['method']
+                func = self.methods[name]
+                if 'params' in request:
+                    result = func(*request['params'])
 
-            return {
-                'id': req['id'],
-                'result': result,
-                'error': None,
-                }
-        except:
-            traceback.print_exc(file=sys.stderr)
-            return { 
-                'id': req['id'],
-                'result': None,
-                'error': traceback.format_exc(),
-                }
+                return {
+                    'id': request['id'],
+                    'result': result,
+                    'error': None,
+                }                
+            except:
+                traceback.print_exc(file=sys.stderr)
+                return { 
+                    'id': request['id'],
+                    'result': None,
+                    'error': traceback.format_exc(),
+                    }
 
+    def __call__(self, func):
+        """This is called when the mapper is used as a decorator."""
+        self.methods[func.__name__] = func
+        return func
+
+register = MethodMapper
