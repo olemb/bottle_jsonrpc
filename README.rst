@@ -35,7 +35,7 @@ Alternatively you can pass an object to ``register()``:
 All public methods (callable attributes that don't start with ``_``)
 will be exported as JSON-RPC methods.
 
-You can also manipulate the method dictionary directly::
+You can also manipulate the method dictionary directly:
 
 .. code-block:: python
 
