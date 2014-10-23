@@ -10,6 +10,12 @@ import sys
 import traceback
 import bottle
 
+__author__ = 'Ole Martin Bjorndalen'
+__email__ = 'ombdalen@gmail.com'
+__url__ = 'http://github.com/olemb/bottle_jsonrpc/'
+__license__ = 'MIT'
+__version__ = '0.1.0'
+
 def register(path, obj, app=None):
     """Register object (any namespace will do) for JSON-RPC."""
 
