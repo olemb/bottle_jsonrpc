@@ -46,7 +46,9 @@ function rpc(method) {
 <body>
 
 <p>
-1 + 2 = <script>document.write(rpc('add', 1, 2));</script>
+1 + 2 == <script>document.write(rpc('add', 1, 2));</script>
+<br>
+sort([3, 1, 2]) == [<script>document.write(rpc('sort', [3, 1, 2]));</script>]
 </p>
 
 </body>

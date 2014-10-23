@@ -63,4 +63,4 @@ class NameSpace:
         self.methods[func.__name__] = func
         return func
 
-register = MethodMapper
+register = NameSpace
