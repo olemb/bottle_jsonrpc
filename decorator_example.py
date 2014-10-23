@@ -15,7 +15,7 @@ import bottle_jsonrpc
 def index():
     return bottle.static_file('example.html', os.getcwd())
 
-jsonrpc = bottle_jsonrpc.register('/rpc', Methods())
+jsonrpc = bottle_jsonrpc.register('/rpc')
 
 @jsonrpc
 def add(a, b):
