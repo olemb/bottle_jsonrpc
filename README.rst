@@ -4,10 +4,6 @@ A simple JSON-RPC implementation for Bottle
 ``bottle_jsonrpc.py`` implements `JSON-RPC <http://json-rpc.org/>`_
 for `Bottle <http://bottlepy.org/>`_ in a pretty straight forward way.
 
-You can attach any object to a path. POST requests to that path will
-then be treated as JSON-RPC calls. Each public callable method or
-attribute of the object will be exposed as a method.
-
 
 Example
 -------
