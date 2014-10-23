@@ -22,10 +22,6 @@ Example
     def add(a, b):
         return a + b
 
-    @jsonrpc
-    def sub(a, b):
-        return a - b
-
 Alternatively you can pass an object to ``register()``:
 
 .. code-block:: python
@@ -34,10 +30,6 @@ Alternatively you can pass an object to ``register()``:
         def add(a, b):
             return a + b
 
-        @jsonrpc
-        def sub(a, b):
-            return a - b
- 
     bottle_jsonrpc.register('/rpc', Methods())
 
 All public methods (callable attributes that don't start with ``_``)
@@ -47,8 +39,11 @@ You can also manipulate the method dictionary directly::
 
 .. code-block:: python
 
+    def add(a, b):
+        return a + b
+
     jsonrpc = bottle_jsonrpc.register('/rpc')
-    jsonrpc.methods['sqrt'] = math.sqrt
+    jsonrpc.methods['add'] = add
 
 
 Arguments to register()
