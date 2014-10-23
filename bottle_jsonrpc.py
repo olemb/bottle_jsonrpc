@@ -2,13 +2,18 @@
 """
 Very minimal implementation of JSON-RPC for Bottle.
 """
-
 from __future__ import unicode_literals, print_function
 
 import os
 import sys
 import traceback
 import bottle
+
+__author__ = 'Ole Martin Bjorndalen'
+__email__ = 'ombdalen@gmail.com'
+__url__ = 'http://github.com/olemb/bottle_jsonrpc/'
+__license__ = 'MIT'
+__version__ = '0.2.0'
 
 class NameSpace:
     def __init__(self, path, obj=None, app=None):
