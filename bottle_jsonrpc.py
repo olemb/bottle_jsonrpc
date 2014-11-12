@@ -65,11 +65,15 @@ class NameSpace:
                 }                
             except:
                 traceback.print_exc(file=sys.stderr)
-                return { 
+                response = { 
                     'id': request['id'],
                     'result': None,
-                    'error': traceback.format_exc(),
+                    'error': 'Internal server error',
                     }
+                if bottle.debug:
+                    response['traceback'] = traceback.format_exc()
+
+                return response
 
     def __call__(self, func):
         """This is called when the mapper is used as a decorator."""
