@@ -15,6 +15,22 @@ __url__ = 'http://github.com/olemb/bottle_jsonrpc/'
 __license__ = 'MIT'
 __version__ = '0.2.0'
 
+
+def get_public_methods(obj):
+    """Return a dictionary of all public callables in a namespace.
+
+    This can be used for objects, classes and modules.
+    """
+    methods = {}
+
+    for name in dir(obj):
+        method = getattr(obj, name)
+        if not name.startswith('_') and callable(method):
+            methods[name] = method
+        
+    return methods
+
+
 class NameSpace:
     def __init__(self, path, obj=None, app=None):
         self.path = path
@@ -28,15 +44,7 @@ class NameSpace:
 
     def add_object(self, obj):
         """Adds all public methods of the object."""
-        for name in dir(obj):
-            if name.startswith('_'):
-                continue
-
-            func = getattr(obj, name)
-            if not callable(func):
-                continue
-
-            self.methods[name] = func
+        self.methods.update(get_public_methods(obj))
 
     def _make_handler(self):
         """Sets up bottle request handler."""
