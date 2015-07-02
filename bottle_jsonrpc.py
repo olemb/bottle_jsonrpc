@@ -55,8 +55,8 @@ class NameSpace:
             try:
                 name = request['method']
                 func = self.methods[name]
-                if 'params' in request:
-                    result = func(*request['params'])
+                params = request.get('params', {})
+                result = func(*params)
 
                 return {
                     'id': request['id'],
