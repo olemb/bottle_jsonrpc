@@ -1,3 +1,10 @@
+0.2.1 -
+------------------
+
+* Params are now optional as required by the JSONRPC
+  specification. (Patch by Kirill Grushetsky.)
+
+
 0.2.0 - 2014-10-23
 ------------------
 
