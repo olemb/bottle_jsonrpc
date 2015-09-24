@@ -64,6 +64,8 @@ class NameSpace:
                     'error': None,
                 }                
             except:
+                if not self.app.catchall:
+                    raise
                 traceback.print_exc(file=sys.stderr)
                 response = { 
                     'id': request['id'],
