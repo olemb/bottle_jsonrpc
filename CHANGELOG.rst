@@ -2,7 +2,10 @@
 ------------------
 
 * Params are now optional as required by the JSONRPC
-  specification. (Patch by Kirill Grushetsky.)
+specification. (Patch by Kirill Grushetsky.)
+
+* now takes into account bottle's app.catchall setting while handling
+  exceptions.
 
 
 0.2.0 - 2014-10-23
