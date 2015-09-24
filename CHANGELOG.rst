@@ -5,7 +5,7 @@
 specification. (Patch by Kirill Grushetsky.)
 
 * now takes into account bottle's app.catchall setting while handling
-  exceptions.
+  exceptions. (Patch by Kirill Grushetsky.)
 
 
 0.2.0 - 2014-10-23
