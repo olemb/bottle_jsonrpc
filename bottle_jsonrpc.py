@@ -13,7 +13,7 @@ __author__ = 'Ole Martin Bjorndalen'
 __email__ = 'ombdalen@gmail.com'
 __url__ = 'http://github.com/olemb/bottle_jsonrpc/'
 __license__ = 'MIT'
-__version__ = '0.2.0'
+__version__ = '0.2.1'
 
 
 def get_public_methods(obj):

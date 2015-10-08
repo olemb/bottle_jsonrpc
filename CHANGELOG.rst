@@ -1,4 +1,4 @@
-0.2.1 -
+0.2.1 - 2015-10-08
 ------------------
 
 * Params are now optional as required by the JSONRPC
